@@ -1,0 +1,5 @@
+APP_NAME = "app"
+SOFTWARE_NAME = "Case Detector using NLP Transformers"
+SOFTWARE_DESCRIPTION = "For legal jurisdiction."
+ACCEPTABLE_PLAGIARISM_LEVEL = 0.7
+ACCEPTABLE_PLAGIARISM_SENTENCES = 0.7
