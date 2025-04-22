@@ -53,16 +53,22 @@ class Credibility(models.Model):
         bert_instance = BERT.BERTAlgorithm()
         messages = []
 
+        # import pdb
+        # pdb.set_trace()
+        
         research_papers = Research.objects.all()
+        
         if len(research_papers) > 0:
+
             total_mean = 0
             papers = 0
+
             for each_papers in research_papers:
 
                 paper_contents = self.join_paper_contents(each_papers.pk)
                 calculated_cosine = bert_instance.calculate_cosine(text_contents, paper_contents)
+
                 
-                total_mean = total_mean + calculated_cosine
 
                 if calculated_cosine >= app_constants.ACCEPTABLE_PLAGIARISM_SENTENCES:
 
@@ -71,15 +77,15 @@ class Credibility(models.Model):
                         "location": str(each_papers.file_location)
                     })
 
-                papers = papers + 1 # Increment paper
+                    total_mean = total_mean + calculated_cosine # ONLY INCLUDE CALCULATION IF MATCHED
+                    papers = papers + 1 # Increment paper FOR RELATED ELSE SKIP
 
             total_mean = total_mean / papers
             total_mean = round(total_mean, 2)
 
-
         plagiarized = False
 
-        if calculated_cosine >= app_constants.ACCEPTABLE_PLAGIARISM_LEVEL:
+        if total_mean >= app_constants.ACCEPTABLE_PLAGIARISM_LEVEL:
             plagiarized = True
 
         Credibility.objects.all().filter(id = self.pk).update(

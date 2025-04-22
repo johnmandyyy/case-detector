@@ -11,7 +11,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title fw-bold"
-                            id="exampleModalLabel">Submit a paper for review</h5>
+                            id="exampleModalLabel">Submit a complaint for review</h5>
                     </div>
                     <div class="modal-body">
                         <p class="fw-bold p-0 mb-2">
@@ -80,9 +80,9 @@
     </div>
 
         <p class="lead fw-bold mb-0 pb-0">
-            <i class="fa-solid fa-check"></i> Credibility Check
+            <i class="fa-solid fa-check"></i> Add Complaint(s)
         </p>
-        <p class="font-weight-light text-muted">Here you can upload file to verify credibility of academic research. It will search the occurance of plagiarism.</p>
+        <p class="font-weight-light text-muted">Here you can verify the complaint(s) related cases that was possible violated.</p>
         <div style="text-align: right;">
             <span v-if="is_loading === false">
                 <button class="btn btn-secondary w-15 mb-2" @click="addResearch()"><i
@@ -100,10 +100,10 @@
             <table class="table" id="reserach-table">
                 <thead>
                     <tr>
-                        <th>Research Title(s)</th>
+                        <th>File Case No #.</th>
                         <th>Description</th>
                         <th>Occurance Level</th>
-                        <th>Is Plagiarized</th>
+                        <th>Has Matched Records</th>
                         <th>Action(s)</th>
                     </tr>
                 </thead>

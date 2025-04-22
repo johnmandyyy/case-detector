@@ -121,4 +121,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
 
-EXPIRY_DATE = expiry(int(0x7e8), int(0x8), int(0x1), 0, 0, 0, 0) < expiry.now()
+EXPIRY_DATE = None
